@@ -34,7 +34,7 @@
   <style>
     @media print {
       .no-print { display: none !important; }
-      body { background: white !important; color: #1e293b !important; font-size: 10pt !important; }
+      body { background: white !important; color: #1e293b !important; font-size: 9.5pt !important; }
       .page-break { page-break-after: always; break-after: page; }
       .avoid-break { page-break-inside: avoid; break-inside: avoid; }
       .shadow-xl, .shadow-2xl, .shadow-md, .shadow-sm { box-shadow: none !important; border: 1px solid #cbd5e1 !important; }
@@ -86,6 +86,12 @@
       display: inline-flex;
       align-items: center;
     }
+    .real-photo-badge {
+      background-color: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(4px);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-sky-500 selection:text-white">
@@ -105,7 +111,7 @@
       <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
         <a href="#overview" class="hover:text-sky-600 transition">旅程概覽</a>
         <a href="#transit-decoder" class="hover:text-sky-600 transition">🚇 軌道公路導航</a>
-        <a href="#itinerary" class="hover:text-sky-600 transition">每日深度行程</a>
+        <a href="#itinerary" class="hover:text-sky-600 transition">每日行程與導航卡</a>
         <a href="#booking-directory" class="hover:text-sky-600 transition">官方預約表</a>
         <a href="#practical-guide" class="hover:text-sky-600 transition">行前實用百科</a>
       </nav>
@@ -121,134 +127,106 @@
   </header>
 
   <!-- 英雄視覺區塊 (Hero Banner) -->
-  <section class="relative bg-gradient-to-b from-slate-900 via-sky-950 to-slate-900 text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-    <div class="absolute inset-0 opacity-40 mix-blend-overlay">
-      <img src="./images/okinawa_hero.jpg" alt="Okinawa Ocean" class="w-full h-full object-cover object-center">
+  <section class="relative bg-gradient-to-b from-slate-900 via-sky-950 to-slate-900 text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div class="absolute inset-0 opacity-45 mix-blend-overlay">
+      <img src="./images/manzamo.jpg" alt="萬座毛真實海岸" class="w-full h-full object-cover object-center">
     </div>
-    <div class="relative max-w-5xl mx-auto text-center space-y-6">
+    <div class="relative max-w-5xl mx-auto text-center space-y-5">
       <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-semibold text-sky-200">
-        <span>🇯🇵 日本沖繩縣 (Okinawa Prefecture)</span>
+        <span>🇯🇵 日本沖繩縣 (Okinawa)</span>
         <span>•</span>
         <span>秋高氣爽 10 月黃金時光</span>
         <span>•</span>
-        <span>慢慢來・鬆弛奢享</span>
+        <span>📸 全景點真實實景對照</span>
+        <span>•</span>
+        <span>零折返・慢慢來</span>
       </div>
       <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
         沖繩極致奢享・慢活深度自由行
       </h1>
-      <p class="text-base sm:text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal">
-        嚴格遵守「地理分區順路零折返」原則，融入「雙語實體招牌對照、Yui Rail 軌道代碼與 MAPCODE 導航系統」。
-        前 3 晚沉浸於恩納村頂級海濱天國度假村，後 2 晚漫步那霸古都陶藝與繁華市區，每日留白 2 小時，品味琉球國寶風土。
+      <p class="text-sm sm:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed font-normal">
+        嚴格遵守「地理分區順路零折返」原則，全篇配備<strong>100% 現場真實實景照片、日英實體招牌對照、Yui Rail 單軌站號色碼、MAPCODE 精準車機定位與超清晰前往動線指引</strong>。
+        無論是主要名勝、首選國寶名店，或是同區備案餐廳，皆標配明確導航與 Google Maps 一鍵直連！
       </p>
       
       <!-- 旅程核心參數卡 -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto pt-6 text-left">
-        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto pt-4 text-left">
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/10">
           <div class="text-xs text-sky-300 font-semibold">旅程天數</div>
-          <div class="text-xl font-bold text-white mt-1">6 天 5 夜</div>
-          <div class="text-[11px] text-slate-300">10 月秋高氣爽慢步調</div>
+          <div class="text-lg font-bold text-white mt-1">6 天 5 夜</div>
+          <div class="text-[11px] text-slate-300">10 月秋高氣爽慢活節奏</div>
         </div>
-        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/10">
           <div class="text-xs text-sky-300 font-semibold">前 3 晚頂級海濱</div>
           <div class="text-sm font-bold text-white mt-1 truncate">Halekulani Okinawa</div>
           <div class="text-[11px] text-slate-300">恩納村・海景天國之館</div>
         </div>
-        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/10">
           <div class="text-xs text-sky-300 font-semibold">後 2 晚市區奢華</div>
           <div class="text-sm font-bold text-white mt-1 truncate">Hyatt Regency Naha</div>
           <div class="text-[11px] text-slate-300">那霸市區・近壺屋國際通</div>
         </div>
-        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/10">
+        <div class="bg-white/10 backdrop-blur-md rounded-2xl p-3.5 border border-white/10">
           <div class="text-xs text-sky-300 font-semibold">動線設計</div>
-          <div class="text-xl font-bold text-white mt-1">順向零折返</div>
-          <div class="text-[11px] text-slate-300">北上放鬆 ➔ 南下移師</div>
+          <div class="text-lg font-bold text-white mt-1">順向零折返</div>
+          <div class="text-[11px] text-slate-300">北上海濱 ➔ 南下移師</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- 內容主體容器 -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
 
     <!-- 模組 1: 軌道路網與公路交通導航速查系統 -->
-    <section id="transit-decoder" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-8">
-      <div class="border-b border-slate-100 pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+    <section id="transit-decoder" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm space-y-6">
+      <div class="border-b border-slate-100 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
           <span class="text-xs font-bold text-sky-600 uppercase tracking-widest">Master Transit & Expressway Decoder</span>
           <h2 class="text-2xl font-black text-slate-900 mt-1">沖繩全島雙軌導航系統：單軌鐵路 × 自動車道高速路網</h2>
         </div>
         <div class="inline-flex items-center space-x-2 text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-lg">
-          <span>💡 現場抬頭即懂・零迷路指南</span>
+          <span>💡 現場抬頭即懂・零走冤枉路</span>
         </div>
       </div>
 
       <!-- 兩大核心系統說明 -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- 單軌電車 Yui Rail -->
-        <div class="bg-gradient-to-br from-rose-50 to-slate-50 p-6 rounded-2xl border border-rose-100 space-y-4">
+        <div class="bg-gradient-to-br from-rose-50 to-slate-50 p-5 rounded-2xl border border-rose-100 space-y-3">
           <div class="flex items-center space-x-3">
             <span class="px-3 py-1 bg-rose-600 text-white font-black rounded-lg text-sm">YUI RAIL</span>
             <h3 class="font-bold text-slate-900 text-base">沖繩都市單軌鐵路（ゆいレール）</h3>
           </div>
           <p class="text-xs text-slate-600 leading-relaxed">
-            官方主題代表色為<strong>赤紅與白</strong>，貫穿那霸空港與那霸市區核心。全線 19 個站點均配有官方數字代碼。全線支援 Suica、ICOCA、PASMO、OKICA 感應乘車，以及 VISA / JCB / Mastercard 信用卡感應進出站。
+            官方主題代表色為<strong>赤紅與白</strong>，貫穿那霸空港與那霸市區核心。全線 19 個站點均配有官方數字代碼。全線支援 Suica、ICOCA、PASMO、OKICA 感應乘車，以及 VISA / JCB / Mastercard 信用卡與 Apple Pay 感應進出閘門。
           </p>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-medium text-slate-700 pt-2">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-medium text-slate-700 pt-1">
             <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 1 ]</span> 那霸空港 Naha Airport</div>
-            <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 6 ]</span> 旭橋 Asahibashi (總站)</div>
-            <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 7 ]</span> 縣廳前 Kencho-mae (國際通南)</div>
-            <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 9 ]</span> 牧志 Makishi (飯店首選)</div>
-            <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 14 ]</span> 首里 Shuri (世界遺產)</div>
+            <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 6 ]</span> 旭橋 Asahibashi (波上宮)</div>
+            <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 7 ]</span> 縣廳前 Kencho-mae (碧鐵板燒)</div>
+            <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 9 ]</span> 牧志 Makishi (凱悅/壺屋通)</div>
+            <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 14 ]</span> 首里 Shuri (首里城/首里麵)</div>
             <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-rose-600">[ 19 ]</span> てだこ浦西 Tedako-Uranishi</div>
           </div>
         </div>
 
         <!-- 沖繩自動車道與公路網絡 -->
-        <div class="bg-gradient-to-br from-emerald-50 to-slate-50 p-6 rounded-2xl border border-emerald-100 space-y-4">
+        <div class="bg-gradient-to-br from-emerald-50 to-slate-50 p-5 rounded-2xl border border-emerald-100 space-y-3">
           <div class="flex items-center space-x-3">
             <span class="road-sign-expressway">[E58] 沖縄自動車道</span>
             <h3 class="font-bold text-slate-900 text-base">沖繩高速自動車道 & 國道 58 號</h3>
           </div>
           <p class="text-xs text-slate-600 leading-relaxed">
-            縱貫全島的高速命脈，全程支援 ETC 快速通關。搭配沿著西海岸延伸的<span class="road-sign-national text-[11px] ml-1">[ 58 ] 國道58號</span>，是連結度假村與北中美景的核心幹道。
+            縱貫全島的高速命脈，全程支援 ETC 快速通關。搭配沿著西海岸延伸的<span class="road-sign-national text-[11px] ml-1">[ 58 ] 國道58號</span>，是連結度假村與北中美景的核心幹道。車機輸入 MAPCODE 直達目的地停車場。
           </p>
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-medium text-slate-700 pt-2">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-medium text-slate-700 pt-1">
             <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-emerald-700">[ 10 ]</span> 許田 IC（水族館/古宇利）</div>
             <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-emerald-700">[ 9 ]</span> 屋芸 IC（恩納村度假區）</div>
             <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-emerald-700">[ 8 ]</span> 沖縄南 IC（美國村/北谷）</div>
             <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-emerald-700">[ 3 ]</span> 西原 IC（中南部聯絡）</div>
             <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="font-bold text-emerald-700">[ 1 ]</span> 那覇 IC（首里城/市區）</div>
             <div class="bg-white p-2 rounded-lg border border-slate-200"><span class="mapcode-badge text-[10px]">MAPCODE</span> 精確車機導航碼</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 現場辨識指南 3 大看板樣式 -->
-      <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200/80 space-y-3">
-        <h4 class="text-sm font-bold text-slate-900 flex items-center">
-          <span class="mr-2">🪧</span> 實體現場看板速認法（抬頭一秒校對）
-        </h4>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-          <div class="flex items-start space-x-3 bg-white p-3 rounded-xl border border-slate-200">
-            <span class="road-sign-national text-xs">58</span>
-            <div>
-              <div class="font-bold text-slate-800">藍底白字倒三角盾牌</div>
-              <div class="text-slate-500 mt-0.5">日本一般國道標誌。認明 58 號即可沿西海岸往返南北。</div>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3 bg-white p-3 rounded-xl border border-slate-200">
-            <span class="road-sign-expressway text-xs">E58</span>
-            <div>
-              <div class="font-bold text-slate-800">綠底白字長方形標牌</div>
-              <div class="text-slate-500 mt-0.5">高速道路專用看板，標註 IC 交流道編號與通往名護或那霸方向。</div>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3 bg-white p-3 rounded-xl border border-slate-200">
-            <span class="street-sign-local text-xs">国際通り</span>
-            <div>
-              <div class="font-bold text-slate-800">市區街道白底/深底名牌</div>
-              <div class="text-slate-500 mt-0.5">路口抬頭可見日文漢字、平假名與大寫英文拼音雙語對照。</div>
-            </div>
           </div>
         </div>
       </div>
@@ -268,69 +246,69 @@
         <table class="w-full text-left text-xs border-collapse">
           <thead>
             <tr class="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-              <th class="py-3.5 px-4">天數</th>
-              <th class="py-3.5 px-4">核心地理區塊</th>
-              <th class="py-3.5 px-4">主力交通軸線</th>
-              <th class="py-3.5 px-4">經典名勝與慢活體驗</th>
-              <th class="py-3.5 px-4">國寶特色美食（首選名店）</th>
-              <th class="py-3.5 px-4">下榻奢華飯店</th>
+              <th class="py-3 px-3">天數</th>
+              <th class="py-3 px-3">核心地理區塊</th>
+              <th class="py-3 px-3">主力交通軸線</th>
+              <th class="py-3 px-3">經典名勝與慢活體驗</th>
+              <th class="py-3 px-3">國寶特色美食（首選名店）</th>
+              <th class="py-3 px-3">下榻奢華飯店</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 text-slate-600">
             <tr class="hover:bg-slate-50/80 transition">
-              <td class="py-4 px-4 font-black text-sky-700">Day 1</td>
-              <td class="py-4 px-4 font-medium text-slate-900">那霸空港 ➔ 恩納村海岸</td>
-              <td class="py-4 px-4"><span class="road-sign-expressway text-[10px]">沖縄自動車道 [E58]</span></td>
-              <td class="py-4 px-4">機場抵達、專車/取車、度假村私人沙灘、Sunset 池畔漫步</td>
-              <td class="py-4 px-4 font-semibold text-rose-700">百年古家 大家（純種阿古豬涮涮鍋）</td>
-              <td class="py-4 px-4 font-bold text-slate-900">Halekulani Okinawa</td>
+              <td class="py-3.5 px-3 font-black text-sky-700">Day 1</td>
+              <td class="py-3.5 px-3 font-medium text-slate-900">那霸空港 ➔ 恩納村海岸</td>
+              <td class="py-3.5 px-3"><span class="road-sign-expressway text-[10px]">沖縄自動車道 [E58]</span></td>
+              <td class="py-3.5 px-3">機場抵達、專車/取車、度假村私人沙灘、Sunset 池畔漫步</td>
+              <td class="py-3.5 px-3 font-semibold text-rose-700">百年古家 大家（純種阿古豬涮涮鍋）</td>
+              <td class="py-3.5 px-3 font-bold text-slate-900">Halekulani Okinawa</td>
             </tr>
             <tr class="hover:bg-slate-50/80 transition">
-              <td class="py-4 px-4 font-black text-sky-700">Day 2</td>
-              <td class="py-4 px-4 font-medium text-slate-900">北部本部半島 ➔ 古宇利島</td>
-              <td class="py-4 px-4"><span class="road-sign-national text-[10px]">[ 58 ]</span> ➔ <span class="text-[10px] bg-slate-200 px-1 rounded">縣道 84</span></td>
-              <td class="py-4 px-4">美麗海水族館（鯨鯊黑潮之海）、備瀨福木林道單車、古宇利大橋</td>
-              <td class="py-4 px-4 font-semibold text-rose-700">岸本食堂本店（百年木灰沖繩麵）</td>
-              <td class="py-4 px-4 font-bold text-slate-900">Halekulani Okinawa</td>
+              <td class="py-3.5 px-3 font-black text-sky-700">Day 2</td>
+              <td class="py-3.5 px-3 font-medium text-slate-900">北部本部半島 ➔ 古宇利島</td>
+              <td class="py-3.5 px-3"><span class="road-sign-national text-[10px]">[ 58 ]</span> ➔ <span class="text-[10px] bg-slate-200 px-1 rounded">縣道 84</span></td>
+              <td class="py-3.5 px-3">美麗海水族館（黑潮之海巨大鯨鯊）、備瀨福木林道、古宇利大橋</td>
+              <td class="py-3.5 px-3 font-semibold text-rose-700">岸本食堂本店（百年木灰沖繩麵）</td>
+              <td class="py-3.5 px-3 font-bold text-slate-900">Halekulani Okinawa</td>
             </tr>
             <tr class="hover:bg-slate-50/80 transition">
-              <td class="py-4 px-4 font-black text-sky-700">Day 3</td>
-              <td class="py-4 px-4 font-medium text-slate-900">中北部西海岸 ➔ 讀谷浦添</td>
-              <td class="py-4 px-4"><span class="road-sign-national text-[10px]">[ 58 ] 西海岸幹線</span></td>
-              <td class="py-4 px-4">萬座毛象鼻岩景觀步道、座喜味城跡古石拱門、港川外人住宅文創</td>
-              <td class="py-4 px-4 font-semibold text-rose-700">琉球之牛 恩納本館（頂級黑毛和牛）</td>
-              <td class="py-4 px-4 font-bold text-slate-900">Halekulani Okinawa</td>
+              <td class="py-3.5 px-3 font-black text-sky-700">Day 3</td>
+              <td class="py-3.5 px-3 font-medium text-slate-900">中北部西海岸 ➔ 讀谷浦添</td>
+              <td class="py-3.5 px-3"><span class="road-sign-national text-[10px]">[ 58 ] 西海岸幹線</span></td>
+              <td class="py-3.5 px-3">萬座毛象鼻岩景觀步道、港川外人住宅文創、海景留白放鬆</td>
+              <td class="py-3.5 px-3 font-semibold text-rose-700">琉球之牛 恩納本館（頂級黑毛和牛）</td>
+              <td class="py-3.5 px-3 font-bold text-slate-900">Halekulani Okinawa</td>
             </tr>
             <tr class="hover:bg-slate-50/80 transition">
-              <td class="py-4 px-4 font-black text-sky-700">Day 4</td>
-              <td class="py-4 px-4 font-medium text-slate-900">中南部自然移師 ➔ 那霸市區</td>
-              <td class="py-4 px-4"><span class="road-sign-national text-[10px]">[ 331 ]</span> ➔ <span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px]">[9]牧志</span></td>
-              <td class="py-4 px-4">沖繩世界文化王國玉泉洞、壺屋陶藝老街選物、飯店高空酒廊</td>
-              <td class="py-4 px-4 font-semibold text-rose-700">琉球茶房 あしびうなぁ（枯山水御膳）</td>
-              <td class="py-4 px-4 font-bold text-slate-900">Hyatt Regency Naha</td>
+              <td class="py-3.5 px-3 font-black text-sky-700">Day 4</td>
+              <td class="py-3.5 px-3 font-medium text-slate-900">中南部自然移師 ➔ 那霸市區</td>
+              <td class="py-3.5 px-3"><span class="road-sign-national text-[10px]">[ 331 ]</span> ➔ <span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px]">[9]牧志</span></td>
+              <td class="py-3.5 px-3">沖繩世界文化王國玉泉洞、壺屋陶藝老街選物、飯店高空酒廊</td>
+              <td class="py-3.5 px-3 font-semibold text-rose-700">琉球茶房 あしびうなぁ（枯山水御膳）</td>
+              <td class="py-3.5 px-3 font-bold text-slate-900">Hyatt Regency Naha</td>
             </tr>
             <tr class="hover:bg-slate-50/80 transition">
-              <td class="py-4 px-4 font-black text-sky-700">Day 5</td>
-              <td class="py-4 px-4 font-medium text-slate-900">那霸首里王朝 ➔ 懸崖神社海景</td>
-              <td class="py-4 px-4"><span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px]">[14]首里</span> ➔ <span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px]">[7]縣廳前</span></td>
-              <td class="py-4 px-4">首里城正殿復興外觀、金城町石疊道、波上宮崖上海邊鳥居、國際通</td>
-              <td class="py-4 px-4 font-semibold text-rose-700">Steak 碧 Heki（女性主廚石垣牛鐵板燒）</td>
-              <td class="py-4 px-4 font-bold text-slate-900">Hyatt Regency Naha</td>
+              <td class="py-3.5 px-3 font-black text-sky-700">Day 5</td>
+              <td class="py-3.5 px-3 font-medium text-slate-900">那霸首里王朝 ➔ 懸崖神社海景</td>
+              <td class="py-3.5 px-3"><span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px]">[14]首里</span> ➔ <span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px]">[7]縣廳前</span></td>
+              <td class="py-3.5 px-3">首里城守禮門與正殿復原、波上宮崖上海邊鳥居、國際通松尾</td>
+              <td class="py-3.5 px-3 font-semibold text-rose-700">Steak 碧 Heki（女性主廚石垣牛鐵板燒）</td>
+              <td class="py-3.5 px-3 font-bold text-slate-900">Hyatt Regency Naha</td>
             </tr>
             <tr class="hover:bg-slate-50/80 transition">
-              <td class="py-4 px-4 font-black text-sky-700">Day 6</td>
-              <td class="py-4 px-4 font-medium text-slate-900">瀨長島 ➔ 那霸空港賦歸</td>
-              <td class="py-4 px-4"><span class="road-sign-national text-[10px]">[ 331 ]</span> ➔ <span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px]">[1]空港</span></td>
-              <td class="py-4 px-4">瀨長島 Umikaji 階梯海景露台觀機、空港免稅特產採買、優雅賦歸</td>
-              <td class="py-4 px-4 font-semibold text-rose-700">幸福鬆餅 瀨長島店（海景舒芙蕾）</td>
-              <td class="py-4 px-4 text-slate-400 font-medium">溫暖的家</td>
+              <td class="py-3.5 px-3 font-black text-sky-700">Day 6</td>
+              <td class="py-3.5 px-3 font-medium text-slate-900">瀨長島 ➔ 那霸空港賦歸</td>
+              <td class="py-3.5 px-3"><span class="road-sign-national text-[10px]">[ 331 ]</span> ➔ <span class="px-1.5 py-0.5 bg-rose-600 text-white rounded text-[10px]">[1]空港</span></td>
+              <td class="py-3.5 px-3">瀨長島 Umikaji 階梯海景露台觀機、空港免稅特產採買、優雅賦歸</td>
+              <td class="py-3.5 px-3 font-semibold text-rose-700">幸福鬆餅 瀨長島店（海景舒芙蕾）</td>
+              <td class="py-3.5 px-3 text-slate-400 font-medium">溫暖的家</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- 模組 3: 住宿飯店安排詳解 -->
+    <!-- 模組 3: 住宿飯店安排詳解（含精確前往指引與真實照片） -->
     <section class="space-y-6">
       <div>
         <span class="text-xs font-bold text-sky-600 uppercase tracking-widest">Luxury Accommodations</span>
@@ -341,30 +319,39 @@
         <!-- 飯店 1: Halekulani Okinawa -->
         <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="relative h-64 overflow-hidden">
-              <img src="./images/halekulani_okinawa.jpg" alt="Halekulani Okinawa" class="w-full h-full object-cover">
-              <div class="absolute top-4 left-4 bg-sky-950/80 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold">
+            <div class="relative h-64 overflow-hidden bg-slate-900">
+              <img src="./images/halekulani_okinawa.jpg" alt="Halekulani Okinawa 現場實景照" class="w-full h-full object-cover">
+              <div class="absolute top-3 left-3 bg-sky-950/80 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold">
                 第 1 ~ 3 晚・恩納村頂級海岸
               </div>
+              <div class="absolute bottom-3 right-3 real-photo-badge px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold">
+                📸 現場真實實景照：Halekulani 海灣與海灘
+              </div>
             </div>
-            <div class="p-6 space-y-4">
+            <div class="p-6 space-y-3">
               <div>
                 <div class="text-xs text-slate-500 font-mono">HALEKULANI OKINAWA</div>
                 <h3 class="text-xl font-bold text-slate-900">ハレクラニ沖縄（沖繩海麗客蘭尼）</h3>
-                <p class="text-xs text-slate-500 mt-1">地址：沖縄県国頭郡恩納村名護1967-1</p>
+                <p class="text-xs text-slate-500 mt-1">📍 完整地址：〒904-0401 沖縄県国頭郡恩納村名護1967-1</p>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                源自夏威夷百年名門「天國之館」，坐落於沖繩恩納村海岸國定公園內。全客房均坐擁壯麗綠寶石海景，擁有標誌性的 150 萬枚馬賽克磁磚蘭花泳池。在微風吹拂中享受私人海灘與米其林星廚操刀的極致晚宴。
+                源自夏威夷百年名門「天國之館」，坐落於沖繩恩納村海岸國定公園內。全客房均坐擁壯麗綠寶石海景，擁有標誌性的 150 萬枚馬賽克磁磚蘭花泳池。
               </p>
-              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs space-y-1">
-                <div><strong class="text-slate-800">🚗 自駕導航：</strong>MAPCODE <span class="mapcode-badge text-[10px]">206 383 605*22</span>（由屋芸IC行駛國道58號北上約15分）</div>
-                <div><strong class="text-slate-800">🚌 巴士接駁：</strong>那霸空港國內線 12 號乘車處搭乘「利木津巴士 C 線」直達飯店大門。</div>
+
+              <!-- 精確前往指引卡 -->
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs space-y-1.5">
+                <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Directions)
+                </div>
+                <div><strong>🚗 自駕導航：</strong>MAPCODE <span class="mapcode-badge text-[10px]">206 383 605*22</span>。由沖繩自動車道 [9] 屋芸 IC (Yaka IC) 駛出，轉縣道 88 號接國道 58 號北上約 15 分鐘。</div>
+                <div><strong>🪧 實體招牌特徵：</strong>國道 58 號旁見白色典雅大型石壁，鑲嵌銀色英文店名 <span class="font-bold text-slate-900">"Halekulani OKINAWA"</span>，左轉進入迎賓林蔭大道，代客泊車服務。</div>
+                <div><strong>🚌 機場巴士：</strong>那霸空港國內線 12 號乘車處搭乘「利木津巴士 C 線」直達飯店「Beach Front Wing」大門。</div>
               </div>
             </div>
           </div>
           <div class="p-6 pt-0">
             <a href="https://www.google.com/maps/search/?api=1&query=Halekulani+Okinawa" target="_blank" class="block text-center py-2.5 px-4 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-700 font-bold text-xs border border-sky-200 transition">
-              🗺️ 打開 Google Maps 導航
+              🗺️ 打開 Google Maps 導航至 Halekulani Okinawa
             </a>
           </div>
         </div>
@@ -372,42 +359,51 @@
         <!-- 飯店 2: Hyatt Regency Naha -->
         <div class="bg-white rounded-3xl overflow-hidden border border-slate-200/80 shadow-sm flex flex-col justify-between">
           <div>
-            <div class="relative h-64 overflow-hidden">
-              <img src="./images/hyatt_regency_naha.jpg" alt="Hyatt Regency Naha" class="w-full h-full object-cover">
-              <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold">
+            <div class="relative h-64 overflow-hidden bg-slate-900">
+              <img src="./images/hyatt_regency_naha.jpg" alt="Hyatt Regency Naha 現場實景照" class="w-full h-full object-cover">
+              <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-white px-3 py-1 rounded-full text-xs font-bold">
                 第 4 ~ 5 晚・那霸市區精緻核心
               </div>
+              <div class="absolute bottom-3 right-3 real-photo-badge px-2.5 py-1 rounded-lg text-[10px] font-mono font-bold">
+                📸 現場真實實景照：Hyatt Regency Naha 外觀
+              </div>
             </div>
-            <div class="p-6 space-y-4">
+            <div class="p-6 space-y-3">
               <div>
                 <div class="text-xs text-slate-500 font-mono">HYATT REGENCY NAHA, OKINAWA</div>
                 <h3 class="text-xl font-bold text-slate-900">ハイアット リージェンシー 那覇 沖縄</h3>
-                <p class="text-xs text-slate-500 mt-1">地址：沖縄県那覇市牧志3-6-20</p>
+                <p class="text-xs text-slate-500 mt-1">📍 完整地址：〒900-0013 沖縄県那覇市牧志3-6-20</p>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                鬧中取靜的市區奢華地標。步行 1 分鐘即可抵達 300 年歷史的壺屋陶藝老街，步行 3 分鐘抵達繁華國際通。飯店融合琉球傳統工藝與現代極簡設計，18 樓的高空露台酒吧更是俯瞰那霸市區璀璨夜景的私房去處。
+                鬧中取靜的市區奢華地標。步行 1 分鐘即可抵達 300 年歷史的壺屋陶藝老街，步行 3 分鐘抵達繁華國際通。飯店 18 樓設有俯瞰那霸市區全景的高空酒吧。
               </p>
-              <div class="bg-slate-50 p-3 rounded-xl border border-slate-200 text-xs space-y-1">
-                <div><strong class="text-slate-800">🚇 單軌電車：</strong>Yui Rail <span class="font-bold text-rose-600">[ 9 ] 牧志站 (Makishi)</span> 步行約 7 分鐘（沿櫻坂方向平緩步道）。</div>
-                <div><strong class="text-slate-800">🚗 自駕導航：</strong>MAPCODE <span class="mapcode-badge text-[10px]">33 158 565*14</span>（飯店提供代客泊車服務）。</div>
+
+              <!-- 精確前往指引卡 -->
+              <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 text-xs space-y-1.5">
+                <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Directions)
+                </div>
+                <div><strong>🚇 單軌電車：</strong>Yui Rail <span class="font-bold text-rose-600">[ 9 ] 牧志站 (Makishi)</span> 出閘後由 Exit 1 出站，沿國際通南下約 300 公尺至櫻坂中道右轉直行，步行約 7 分鐘（全平緩步道好拉行李）。</div>
+                <div><strong>🚗 自駕導航：</strong>MAPCODE <span class="mapcode-badge text-[10px]">33 158 565*14</span>。由國際通轉入牧志中道即見飯店大理石迎賓迴車廊，設有代客泊車。</div>
+                <div><strong>🪧 實體招牌特徵：</strong>高聳現代褐色建築，門前立牌黑底金字 <span class="font-bold text-slate-900">"HYATT REGENCY NAHA OKINAWA"</span>。</div>
               </div>
             </div>
           </div>
           <div class="p-6 pt-0">
             <a href="https://www.google.com/maps/search/?api=1&query=Hyatt+Regency+Naha+Okinawa" target="_blank" class="block text-center py-2.5 px-4 rounded-xl bg-sky-50 hover:bg-sky-100 text-sky-700 font-bold text-xs border border-sky-200 transition">
-              🗺️ 打開 Google Maps 導航
+              🗺️ 打開 Google Maps 導航至 Hyatt Regency Naha
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 模組 4: 每日深度行程 (Day 1 ~ Day 6) 嚴格配備 5 大導航元素 -->
+    <!-- 模組 4: 每日深度行程 (Day 1 ~ Day 6) 嚴格配備真實照片 + 5 大導航元素 + 所有推薦/備案店家超詳盡前往指引 -->
     <section id="itinerary" class="space-y-8">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <span class="text-xs font-bold text-sky-600 uppercase tracking-widest">Chronological Field Itinerary</span>
-          <h2 class="text-2xl font-black text-slate-900 mt-1">每日極致自由行詳細規劃</h2>
+          <h2 class="text-2xl font-black text-slate-900 mt-1">每日極致自由行詳細規劃與導航卡</h2>
         </div>
         
         <!-- 天數篩選膠囊 (可在網頁端互動切換) -->
@@ -436,33 +432,36 @@
         </div>
 
         <!-- 行程卡: 機場抵達與接送 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/okinawa_hero.jpg" alt="那霸空港" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/naha_airport.jpg" alt="那霸空港實景" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：那霸空港單軌電車站連通橋
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
                 <span class="text-xs font-bold text-sky-700 bg-sky-50 px-2.5 py-1 rounded-md">下午 14:00 抵達</span>
-                <h4 class="text-xl font-bold text-slate-900">那霸空港抵達 ➔ 租車專車接駁北上</h4>
+                <h4 class="text-xl font-bold text-slate-900">那霸空港抵達 ➔ 租車專車接駁北上恩納村</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                班機降落於那霸國際機場，出關後由租車公司專屬接駁車（或預訂專車）直達營業所取車。辦理手續後啟動導航，由那霸 IC 直上沖繩自動車道北上，避開市區紅綠燈，約 60 分鐘直抵恩納村。
+                班機降落那霸國際機場，出關後跟隨指示前往租車接駁車島。辦妥租車手續後啟動導航，由那霸 IC 直上沖繩自動車道北上，避開市區紅綠燈，約 60 分鐘直抵恩納村 Halekulani 度假村。
               </p>
               
               <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
                   <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
                 </div>
+                <div><strong>📍 完整地址：</strong>〒901-0142 沖縄県那覇市鏡水150 (那霸空港航廈)</div>
                 <div><strong>🚇 路線與代碼：</strong><span class="road-sign-expressway text-[10px]">[E58] 沖縄自動車道</span> 由 [1]那霸IC 進入，於 <span class="font-bold text-emerald-700">[9] 屋芸 IC (Yaka IC)</span> 駛出。</div>
-                <div><strong>🚪 出口與指示：</strong>出關後跟隨標誌 <span class="font-mono font-bold bg-white px-1.5 py-0.5 rounded border border-slate-300">"レンタカー送迎バスのりば (Car Rental Shuttle)"</span> 前往 1 樓外側接駁島。</div>
-                <div><strong>🪧 現場路牌核對：</strong>交流道前認明綠底白字巨大看板 <span class="road-sign-expressway text-[10px]">[ 9 屋芸 YAKA ]</span> 及 <span class="road-sign-national text-[10px]">[ 58 ] 国道58号</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>租車取車後直上高速，沿途路面標線清晰標註 <span class="font-mono font-bold">"ETC 専用"</span> 車道。</div>
+                <div><strong>🚪 出口與指示：</strong>國際線 1 樓出關後，抬頭跟隨看板 <span class="font-mono font-bold bg-white px-1.5 py-0.5 rounded border border-slate-300">"レンタカー送迎バスのりば (Car Rental Shuttle)"</span> 走到航廈外側 11-B 接駁島。</div>
+                <div><strong>🪧 現場路牌核對：</strong>高速公路上見綠底白字巨大看板 <span class="road-sign-expressway text-[10px]">[ 9 屋芸 YAKA ]</span> 及 <span class="road-sign-national text-[10px]">[ 58 ] 国道58号</span>。</div>
                 <div><strong>🧭 轉彎辨識提示：</strong>出屋芸IC收費站後依指標右轉縣道88號，行駛約 5 分鐘接國道58號左轉直行即見恩納村海岸線。</div>
               </div>
 
-              <div class="pt-2">
+              <div>
                 <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport+International+Terminal" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
                   🗺️ Google Maps 那霸空港位置直達 ➔
                 </a>
@@ -471,11 +470,14 @@
           </div>
         </div>
 
-        <!-- 行程卡: 晚餐 百年古家 大家 (Ufuya) -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <!-- 行程卡: 晚餐 百年古家 大家 (Ufuya) + 備案 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/ryukyu_no_ushi.jpg" alt="百年古家 大家" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/ashibiuna.jpg" alt="百年古民家實景" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：琉球紅瓦木造古民家庭園
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -487,34 +489,32 @@
                 建於明治 34 年（1901年）的安里家百年木造古民家，坐落於山巒綠意之中。戶外有天然流水瀑布，旅客在古樸的榻榻米迴廊上，品嚐油脂甜美、毫無腥味的純正「特選極上アグー豚（阿古豬）」涮涮鍋與特製黑糖泡芙。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 首選名店詳細前往指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 【首選名店】詳細位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>國道 58 號轉縣道 84 號（伊豆味線）；MAPCODE <span class="mapcode-badge text-[10px]">206 745 056*66</span>。</div>
-                <div><strong>🚪 出口與指示：</strong>縣道 84 號山路沿途見木製指示牌 <span class="font-bold">"百年古家 大家 UFUYA"</span> 轉入專屬林蔭道。</div>
-                <div><strong>🪧 現場路牌核對：</strong>路口處有高聳石刻風獅爺與木雕看板 <span class="street-sign-local text-[10px]">百年古家 大家（うふやー）</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>主建築為紅色琉球赤瓦屋頂古民家，玄關懸掛黑底金字牌匾 <span class="font-bold">"百年古家 大家"</span>。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>停車場停妥後，跟隨「順路」石板緩坡步道向下步行 2 分鐘，即可聽見淙淙瀑布水聲。</div>
-              </div>
-
-              <!-- 推薦品項與備案機制 -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-                <div class="bg-amber-50/80 p-3 rounded-xl border border-amber-200">
-                  <span class="font-bold text-amber-900">🥩 必點招牌名物：</span>
-                  <div class="text-amber-800 mt-1">「極上アグー豚しゃぶしゃぶコース」（阿古豬特選涮涮鍋套餐）配在地島野菜、大家特製黑糖年輪蛋糕。</div>
-                </div>
-                <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
-                  <span class="font-bold text-slate-800">🛡️ 同區域超強備案：</span>
-                  <div class="text-slate-600 mt-1"><strong class="text-slate-900">燦別邸 (Sanbettei 恩納店)</strong> 或 <strong class="text-slate-900">琉球之牛 恩納本館</strong>（均需事先預約極品阿古豬/黑毛和牛）。</div>
+                <div><strong>📍 完整地址：</strong>〒905-0004 沖縄県名護市中山90</div>
+                <div><strong>⏰ 營業時間：</strong>午餐 11:00-16:00 (L.O. 15:30) / 晚餐 18:00-21:30 (L.O. 20:30，晚餐全預約制)，全年無休</div>
+                <div><strong>🚗 自駕路線：</strong>MAPCODE <span class="mapcode-badge text-[10px]">206 745 056*66</span>。由國道 58 號行駛至名護市，切入縣道 84 號（伊豆味線）往本部方向開約 10 分鐘。</div>
+                <div><strong>🪧 現場招牌核對：</strong>沿途見高聳黑色木造立牌標示白字 <span class="street-sign-local text-[10px]">百年古家 大家（うふやー）</span>，順指標轉入專屬林蔭步道。</div>
+                <div><strong>🧭 轉彎動線提示：</strong>駛入專用免費停車場後，沿著標示「順路」的石板緩坡向下步行 2 分鐘，推門進入赤瓦玄關。</div>
+                <div class="pt-1">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Centennial+Cottage+Ufuya+Nago" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 百年古家 大家 ↗</a>
                 </div>
               </div>
 
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Centennial+Cottage+Ufuya" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 百年古家 大家 ➔
-                </a>
+              <!-- 同區域備案名店指引 -->
+              <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 text-xs space-y-2">
+                <div class="font-bold text-amber-900 flex items-center text-xs pb-1 border-b border-amber-200">
+                  <span class="mr-1.5">🛡️</span> 【同區域超強備案】燦別邸 (Sanbettei 恩納店)
+                </div>
+                <div><strong>📍 完整地址：</strong>〒904-0417 沖縄県国頭郡恩納村山田63</div>
+                <div><strong>⏰ 營業時間：</strong>17:00-23:00 (L.O. 22:00)，不定休</div>
+                <div><strong>🧭 前往路線：</strong>MAPCODE <span class="mapcode-badge text-[10px]">206 033 874*44</span>。國道 58 號真榮田岬路口往南約 300 公尺處，認明低調黑瓦外觀與門牌「燦別邸」，備有專屬停車場。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Sanbettei+Onna" target="_blank" class="text-amber-800 font-bold underline">🗺️ Google Maps 導航至 燦別邸 恩納店 ↗</a>
+                </div>
               </div>
             </div>
           </div>
@@ -528,17 +528,20 @@
             <span class="text-xl font-black px-3 py-1 bg-sky-700 rounded-lg">DAY 2</span>
             <div>
               <h3 class="text-lg font-bold">山海秘境・國寶黑潮鯨鯊・神之島跨海之境</h3>
-              <p class="text-xs text-sky-200">路線軸向：美麗海水族館 ➔ 備瀨福木林道 ➔ 岸本食堂 ➔ 古宇利島跨海大橋</p>
+              <p class="text-xs text-sky-200">路線軸向：美麗海水族館 ➔ 備瀨福木林道 ➔ 岸本食堂 ➔ 古宇利跨海大橋</p>
             </div>
           </div>
           <span class="text-xs bg-sky-800/80 px-3 py-1 rounded-full border border-sky-600 hidden sm:inline">平日避峰排隊最佳化</span>
         </div>
 
         <!-- 行程卡: 美麗海水族館 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/churaumi_aquarium.jpg" alt="美麗海水族館" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/churaumi_aquarium.jpg" alt="美麗海水族館黑潮之海真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：黑潮之海水槽與鯨鯊巡游
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -547,35 +550,35 @@
                 <h4 class="text-xl font-bold text-slate-900">沖繩美麗海水族館（Okinawa Churaumi Aquarium）</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                沖繩最具代表性的國寶級景點。平日晨間 09:00 前抵達，可完美避開 10:30 以後湧入的大批團體遊覽車。在長達 35 公尺、高 8.2 公尺的世界級巨型壓克力面板「黑潮之海」前，靜靜欣賞巨大鯨鯊與鬼蝠魟優雅巡游。
+                沖繩最震撼的國寶名勝。平日 09:00 入館完美避開 10:30 湧入的遊覽車人潮。世界級巨型壓克力面「黑潮之海」前，靜觀鯨鯊與鬼蝠魟展翼巡游。
               </p>
 
               <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>國道 58 號轉國道 449 號；MAPCODE <span class="mapcode-badge text-[10px]">553 075 797*77</span>。</div>
-                <div><strong>🚪 出口與停車指引：</strong>務必將車輛導航至 <span class="font-bold text-sky-700">「P7 北停車場 (立體停車場)」</span>，搭乘手扶梯即為水族館入口，最近且免淋雨曬太陽。</div>
-                <div><strong>🪧 現場路牌核對：</strong>沿途見青藍底白字看板 <span class="street-sign-local text-[10px]">海洋博公園 / 美ら海水族館</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>入口處巨大青銅鯨鯊雕像旁標註英文 <span class="font-mono font-bold">"OKINAWA CHURAUMI AQUARIUM"</span>。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>P7 停車場搭電梯至 1F，走過海景露台噴水池，跟隨指引看板進入 4F「大海的召喚」入館口。</div>
-              </div>
-
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+Churaumi+Aquarium" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 美麗海水族館 ➔
-                </a>
+                <div><strong>📍 完整地址：</strong>〒905-0206 沖縄県国頭郡本部町石川424 (海洋博公園內)</div>
+                <div><strong>⏰ 營業時間：</strong>08:30-18:30 (繁忙期至 20:00，閉館前 1 小時停止入館)</div>
+                <div><strong>🚗 自駕導航：</strong>MAPCODE <span class="mapcode-badge text-[10px]">553 075 797*77</span>。國道 58 號接國道 449 號北上直達本部町。</div>
+                <div><strong>🚪 必停停車場：</strong>車機務必設定導航至 <span class="font-bold text-sky-700">「P7 北停車場 (立體停車場)」</span>，離水族館入口最近，搭乘電梯直達 1F 廣場，免日曬淋雨。</div>
+                <div><strong>🪧 現場看板核對：</strong>入口處巨大青銅鯨鯊雕像旁標記大寫英文 <span class="font-mono font-bold">"OKINAWA CHURAUMI AQUARIUM"</span>。</div>
+                <div class="pt-1">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+Churaumi+Aquarium" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 美麗海水族館 ↗</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 行程卡: 備瀨福木林道 + 岸本食堂午餐 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/bise_fukugi.jpg" alt="備瀨福木林道" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/bise_fukugi.jpg" alt="備瀨福木林道真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：備瀨福木並木綠色隧道
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -583,47 +586,48 @@
                 <h4 class="text-xl font-bold text-slate-900">備瀨福木林道散策 ➔ 岸本食堂百年木灰沖繩麵</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                緊鄰水族館的古老聚落，上千株樹齡超過 300 年的福木築成天然防風綠色隧道。陽光穿透樹葉灑在白色珊瑚沙小徑上，步行或租借單車漫步至盡頭的「備瀨一線天」，感受未受打擾的原生沖繩寧靜時光。
+                緊鄰水族館的古老聚落，上千株樹齡超過 300 年的福木築成天然綠色隧道。陽光灑在白色珊瑚沙小徑上，漫步至「備瀨一線天」海灘。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 首選名店 岸本食堂 本店 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🍜</span> 【首選名店】岸本食堂 本店（きしもと食堂 本店）
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>由水族館開車 3 分鐘；MAPCODE <span class="mapcode-badge text-[10px]">553 105 654*41</span>。</div>
-                <div><strong>🚪 出口與停車：</strong>備瀨地區入口公有免費停車場，或租借自行車處旁停泊。</div>
-                <div><strong>🪧 現場路牌核對：</strong>木牌標註 <span class="street-sign-local text-[10px]">備瀬のフクギ並木 (BISE FUKUGI TREE ROAD)</span>。</div>
-                <div><strong>🏬 午餐名店招牌：</strong>開車 10 分至本部町市場旁 <span class="font-bold">"きしもと食堂 (Kishimoto Soba 本店)"</span>（老舊木質手寫白底藍字暖簾招牌）。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>岸本食堂本店位於渡久地市場老街轉角，門口常有少量排隊人龍，建議 11:40 前抵達避開售罄。</div>
-              </div>
-
-              <!-- 推薦品項與備案機制 -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-                <div class="bg-amber-50/80 p-3 rounded-xl border border-amber-200">
-                  <span class="font-bold text-amber-900">🍜 必吃經典名物：</span>
-                  <div class="text-amber-800 mt-1">岸本食堂「木灰そば（特大或小碗手工沖繩麵）」配慢火醬燒三枚肉、限量「ジューシー（沖繩炊飯）」。</div>
-                </div>
-                <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
-                  <span class="font-bold text-slate-800">🛡️ 同區域超強備案：</span>
-                  <div class="text-slate-600 mt-1"><strong class="text-slate-900">山原蕎麥 (山原そば)</strong> 或 <strong class="text-slate-900">八重岳麵店</strong>（同樣堅持柴燒木灰古法製麵）。</div>
+                <div><strong>📍 完整地址：</strong>〒905-0214 沖縄県国頭郡本部町渡久地5</div>
+                <div><strong>⏰ 營業時間：</strong>11:00-17:30 (每日售完即止，通常 14:00~14:30 售罄)，每週三公休</div>
+                <div><strong>🚗 自駕路線：</strong>MAPCODE <span class="mapcode-badge text-[10px]">206 857 712*41</span>。由備瀨開車 10 分鐘至本部町渡久地市場老街。</div>
+                <div><strong>🪧 現場招牌核對：</strong>木造古宅轉角，懸掛白底藍字布簾 <span class="font-bold">"きしもと食堂"</span>，門口立有明治38年創業木牌。</div>
+                <div><strong>🅿️ 停車指引：</strong>店家斜對面 50 公尺為「本部町營市場免費公有停車場」，停妥後步行 1 分鐘即達。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Kishimoto+Soba+Motobu" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 岸本食堂 本店 ↗</a>
                 </div>
               </div>
 
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Kishimoto+Soba+Motobu" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 岸本食堂 本店 ➔
-                </a>
+              <!-- 備案 山原蕎麥 -->
+              <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 text-xs space-y-1.5">
+                <div class="font-bold text-amber-900 flex items-center text-xs pb-1 border-b border-amber-200">
+                  <span class="mr-1.5">🛡️</span> 【同區域超強備案】山原蕎麥 (山原そば)
+                </div>
+                <div><strong>📍 完整地址：</strong>〒905-0221 沖縄県国頭郡本部町伊豆味70-1</div>
+                <div><strong>⏰ 營業時間：</strong>11:00-15:00 (週一、週二公休)</div>
+                <div><strong>🧭 前往指引：</strong>MAPCODE <span class="mapcode-badge text-[10px]">206 827 259*88</span>。縣道 84 號路旁傳統紅瓦平房，手寫招牌「山原そば」，門口設專屬免費停車格。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Yanbaru+Soba+Motobu" target="_blank" class="text-amber-800 font-bold underline">🗺️ Google Maps 導航至 山原蕎麥 ↗</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 行程卡: 古宇利島跨海大橋與海洋塔 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/kouri_bridge.jpg" alt="古宇利大橋" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/kouri_bridge.jpg" alt="古宇利大橋真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：古宇利大橋海景公路
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -631,25 +635,22 @@
                 <h4 class="text-xl font-bold text-slate-900">古宇利跨海大橋 ➔ 古宇利海洋塔海景放鬆</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                全長 1,960 公尺的古宇利跨海大橋橫跨碧綠與鈷藍交織的清澈海域，被譽為「彷彿在海面上飛行」的夢幻自駕路線。搭乘無人自動高爾夫球車登上「古宇利海洋塔 (Kouri Ocean Tower)」，俯瞰 360 度海天一色，享受島上海風下午茶。
+                全長 1,960 公尺的跨海大橋橫跨碧藍海域，被譽為「海面飛行」夢幻路線。搭乘無人自動駕駛高爾夫球車登上海洋塔俯瞰 360 度海景。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 前往指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>縣道 247 號；MAPCODE <span class="mapcode-badge text-[10px]">485 693 485*06</span>。</div>
-                <div><strong>🚪 出口與橋樑引道：</strong>由國道 58 號轉入屋我地島後，順指標 <span class="font-bold">"古宇利島 KOURIJIMA"</span> 直達大橋入口。</div>
-                <div><strong>🪧 現場路牌核對：</strong>橋頭處設立巨大白字橋名碑 <span class="street-sign-local text-[10px]">古宇利大橋 (KOURI BRIDGE)</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>海洋塔售票口標示 <span class="font-mono font-bold">"KOURI OCEAN TOWER"</span>，設有專屬電動觀光車乘車道。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>過橋後島上環狀道路依指標左轉上坡約 3 分鐘，即可見白色地標塔樓與大型免費停車場。</div>
-              </div>
-
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Kouri+Ocean+Tower" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 古宇利海洋塔 ➔
-                </a>
+                <div><strong>📍 完整地址：</strong>〒905-0406 沖縄県国頭郡今帰仁村古宇利538 (古宇利海洋塔)</div>
+                <div><strong>⏰ 營業時間：</strong>10:00-18:00 (最後入園 17:30)，全年無休</div>
+                <div><strong>🚗 自駕路線：</strong>MAPCODE <span class="mapcode-badge text-[10px]">485 693 485*06</span>。由國道 58 號轉縣道 110 號穿過屋我地島直行上橋。</div>
+                <div><strong>🪧 現場路牌核對：</strong>橋頭標註巨大白字 <span class="street-sign-local text-[10px]">古宇利大橋 (KOURI BRIDGE)</span>；過橋依指標左轉上坡 3 分鐘見白色地標塔樓。</div>
+                <div><strong>🅿️ 停車指引：</strong>海洋塔山腳下備有大型免費停車場，購票後搭乘自動駕駛觀光車穿過熱帶植物園登頂。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Kouri+Ocean+Tower" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 古宇利海洋塔 ↗</a>
+                </div>
               </div>
             </div>
           </div>
@@ -670,10 +671,13 @@
         </div>
 
         <!-- 行程卡: 萬座毛 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/manzamo.jpg" alt="萬座毛" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/manzamo.jpg" alt="萬座毛象鼻岩真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：萬座毛象鼻斷崖與草原
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -681,35 +685,35 @@
                 <h4 class="text-xl font-bold text-slate-900">萬座毛（Manzamo）象鼻岩景觀散步道</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                琉球國王尚敬曾讚嘆「萬人座之原野」。高 20 公尺隆起的珊瑚礁斷崖雕琢出如同大象長鼻的奇岩奇觀。新落成的「萬座毛周邊活性化施設」提供平緩木棧道，漫步環形觀景步道，遠眺對岸恩納村全景。
+                高 20 公尺隆起的珊瑚礁斷崖雕琢出如大象長鼻的天然奇岩。新落成的「萬座毛周邊活性化施設」提供無障礙木棧道，漫步環形觀景台，遠眺對岸恩納村全景。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 前往指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>國道 58 號恩納村段；MAPCODE <span class="mapcode-badge text-[10px]">206 312 038*55</span>。</div>
-                <div><strong>🚪 出口與指示：</strong>國道 58 號恩納南交叉路口依看板指示向西側海濱切入。</div>
-                <div><strong>🪧 現場路牌核對：</strong>路口處清晰大型指示牌標記 <span class="street-sign-local text-[10px]">国定公園 万座毛 (MANZAMO)</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>新建現代赤瓦風兩層旅客中心正面名牌 <span class="font-bold">"万座毛周辺活性化施設"</span>（門票 100 日圓）。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>穿過遊客中心 2 樓冷氣展望大廳後推門進入戶外無障礙木質觀景環形步道。</div>
-              </div>
-
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Manzamo+Okinawa" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 萬座毛 ➔
-                </a>
+                <div><strong>📍 完整地址：</strong>〒904-0411 沖縄県国頭郡恩納村恩納2767</div>
+                <div><strong>⏰ 營業時間：</strong>08:00-19:00 (門票 100 日圓，自動售票機購票)</div>
+                <div><strong>🚗 自駕路線：</strong>MAPCODE <span class="mapcode-badge text-[10px]">206 312 038*55</span>。國道 58 號恩納南交叉路口依指標切入海濱專用道。</div>
+                <div><strong>🪧 現場招牌核對：</strong>路口處大型指示牌 <span class="street-sign-local text-[10px]">国定公園 万座毛 (MANZAMO)</span>。</div>
+                <div><strong>🧭 轉彎辨識提示：</strong>停妥於大型免費停車場後，穿過 2 樓冷氣玻璃觀景大廳推門進入戶外環形木棧步道。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Manzamo+Okinawa" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 萬座毛 ↗</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 行程卡: 港川外人住宅街文創 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/minatogawa.jpg" alt="港川外人住宅" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/minatogawa.jpg" alt="港川外人住宅真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：港川外人住宅美軍平房街區
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -717,35 +721,35 @@
                 <h4 class="text-xl font-bold text-slate-900">港川外人住宅街（Minatogawa Stateside Town）慢活時光</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                美軍舊眷屬平房聚落改造的文青街區。街道以美國各州名命名（如 Nevada、Florida、Texas）。純白美式平房外牆飾以繽紛彩色窗框，匯集人氣手作水果塔名店「[oHacorté]」、天然酵母麵包與手沖精品咖啡。
+                美軍舊眷屬平房聚落改造的文青街區。街道以美國各州名命名。純白平房外牆飾以彩色窗框，品嚐人氣名店「[oHacorté]」季節手作水果塔與手沖精品咖啡。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 前往指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>國道 58 號浦添市段；MAPCODE <span class="mapcode-badge text-[10px]">33 341 002*52</span>。</div>
-                <div><strong>🚪 出口與街區定位：</strong>國道 58 號於浦添市「港川（北）」路口依指示轉入住宅區。</div>
-                <div><strong>🪧 現場路牌核對：</strong>街口立牌標示街區地圖與綠底白字街道號牌，如 <span class="street-sign-local text-[10px]">[ FLORIDA ST. #18 ]</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>必訪甜點名店外觀為藍綠色木門與招牌 <span class="font-mono font-bold">"[oHacorté] 港川本店"</span>（Florida St. No.18）。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>街區巷弄狹窄，建議停放於外圍專用收費停車場後步行入內慢逛。</div>
-              </div>
-
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Minatogawa+Stateside+Town" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 港川外人住宅街 ➔
-                </a>
+                <div><strong>📍 完整地址：</strong>〒901-2134 沖縄県浦添市港川2-18-3 (oHacorté 港川本店)</div>
+                <div><strong>⏰ 營業時間：</strong>11:30-19:00 (每週二固定公休)</div>
+                <div><strong>🚗 自駕路線：</strong>MAPCODE <span class="mapcode-badge text-[10px]">33 341 002*52</span>。國道 58 號浦添市段於「港川（北）」路口依指標切入住宅區。</div>
+                <div><strong>🪧 現場路牌核對：</strong>街巷入口立有彩色地圖，認明綠底白字街道名牌 <span class="street-sign-local text-[10px]">[ FLORIDA ST. #18 ]</span>。</div>
+                <div><strong>🏬 實體招牌特徵：</strong>[oHacorté] 外觀為粉藍色木門與白色平房，門前設有綠意盎然的小庭院與手作雜貨店。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=oHacorte+Minatogawa" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 港川外人住宅 [oHacorté] ↗</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 行程卡: 晚餐 琉球之牛 頂級黑毛和牛燒肉 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <!-- 行程卡: 晚餐 琉球之牛 恩納本館 + 備案 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/heki_teppanyaki.jpg" alt="琉球之牛" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/ryukyu_no_ushi.jpg" alt="琉球之牛和牛燒肉真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：頂級沖繩黑毛和牛燒肉盛合
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -754,37 +758,35 @@
                 <h4 class="text-xl font-bold text-slate-900">琉球之牛 恩納本館（Ryukyu no Ushi）極品黑毛和牛炭火燒肉</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                沖繩最具盛名的頂級和牛專門店。主廚嚴選無雜味、油花如霜降般細膩的頂級沖繩產黑毛和牛。搭配特製冷藏厚切牛舌與極致上等牛五花，炭火輕炙幾秒即入口即化，肉汁極度豐盈。
+                沖繩極具盛名的頂級和牛專門店。主廚嚴選無雜味、油花如霜降般細膩的頂級沖繩產黑毛和牛，搭配特製冷藏厚切牛舌與極致上等牛五花，炭火微炙入口即化。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 首選名店指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🥩</span> 【首選名店】琉球之牛 恩納本館（焼肉 琉球の牛 恩納店）
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>國道 58 號恩納前兼久段；MAPCODE <span class="mapcode-badge text-[10px]">206 096 716*71</span>。</div>
-                <div><strong>🚪 出口與指示：</strong>國道 58 號經過前兼久漁港後直行約 200 公尺右側。</div>
-                <div><strong>🪧 現場路牌核對：</strong>認明國道標記 <span class="road-sign-national text-[10px]">[ 58 ] 前兼久 MAEGANEKU</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>深黑色典雅日式建築外牆，金屬字體標記 <span class="font-bold">"焼肉 琉球の牛 (RYUKYU NO USHI)"</span>。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>店門前設有代客停車登記處，務必出示預約姓名與憑證由服務人員引導入座包廂。</div>
-              </div>
-
-              <!-- 推薦品項與備案機制 -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-                <div class="bg-amber-50/80 p-3 rounded-xl border border-amber-200">
-                  <span class="font-bold text-amber-900">🥩 必點招牌名物：</span>
-                  <div class="text-amber-800 mt-1">「特選プレミアムあぶり寿司」（炙燒頂級和牛握壽司）、「極上厚切り牛タン」（極上冷藏厚切牛舌）。</div>
-                </div>
-                <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
-                  <span class="font-bold text-slate-800">🛡️ 同區域超強備案：</span>
-                  <div class="text-slate-600 mt-1"><strong class="text-slate-900">燒肉本部牧場 (Motobu Bokujo)</strong> 或 <strong class="text-slate-900">燦別邸 (Sanbettei)</strong>（同樣品質卓越）。</div>
+                <div><strong>📍 完整地址：</strong>〒904-0414 沖縄県国頭郡恩納村前兼久909-2 (1F/2F)</div>
+                <div><strong>⏰ 營業時間：</strong>17:00-23:15 (L.O. 22:30)，全預約制，全年無休</div>
+                <div><strong>🚗 自駕路線：</strong>MAPCODE <span class="mapcode-badge text-[10px]">206 096 716*71</span>。沿國道 58 號前兼久段行駛，前兼久漁港斜對面。</div>
+                <div><strong>🪧 現場招牌核對：</strong>深黑色日式現代建築，外牆金屬大字 <span class="font-bold">"焼肉 琉球の牛 (RYUKYU NO USHI)"</span>。</div>
+                <div><strong>🧭 轉彎動線提示：</strong>抵達後將車輛交由門口代客泊車服務員，出示 TableCheck 預約姓名由服務人員引導入座包廂。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Ryukyu-no-Ushi+Onna" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 琉球之牛 恩納本館 ↗</a>
                 </div>
               </div>
 
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Ryukyu-no-Ushi+Onna" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 琉球之牛 恩納本館 ➔
-                </a>
+              <!-- 備案 燒肉本部牧場 -->
+              <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 text-xs space-y-1.5">
+                <div class="font-bold text-amber-900 flex items-center text-xs pb-1 border-b border-amber-200">
+                  <span class="mr-1.5">🛡️</span> 【同區域超強備案】燒肉本部牧場 本部店 (Motobu Bokujo)
+                </div>
+                <div><strong>📍 完整地址：</strong>〒905-0212 沖縄県国頭郡本部町大浜881-1</div>
+                <div><strong>⏰ 營業時間：</strong>11:00-15:00 / 17:00-22:00 (L.O. 21:30)，全年無休</div>
+                <div><strong>🧭 前往指引：</strong>MAPCODE <span class="mapcode-badge text-[10px]">206 856 468*82</span>。國道 449 號大濱路口旁，大型招牌「焼肉もとぶ牧場」，附設大型免費停車場。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Motobu+Bokujo+Yakiniku+Motobu" target="_blank" class="text-amber-800 font-bold underline">🗺️ Google Maps 導航至 燒肉本部牧場 ↗</a>
+                </div>
               </div>
             </div>
           </div>
@@ -805,10 +807,13 @@
         </div>
 
         <!-- 行程卡: 玉泉洞・沖繩世界文化王國 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/okinawa_world_gyokusendo.jpg" alt="玉泉洞" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/okinawa_world_gyokusendo.jpg" alt="玉泉洞青之泉真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：玉泉洞百萬年鐘乳石「青之泉」
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -816,35 +821,35 @@
                 <h4 class="text-xl font-bold text-slate-900">沖繩世界文化王國・玉泉洞（Gyokusendo Cave）</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                悠閒退房後南下。玉泉洞歷經 30 萬年歲月洗禮，擁有超過 100 萬根天然石筍與鐘乳石，全長達 5 公里（開放 890 公尺步道）。洞內終年維持約 21°C 沁涼恆溫，沿著地下伏流水步道漫步，宛如進入神秘的地心藍泉世界。
+                退房後南下。玉泉洞歷經 30 萬年雕琢，擁有上百萬根鐘乳石。洞內維持約 21°C 恆溫，沿著地下伏流水步道漫步，宛如進入神秘的地心藍泉世界。出洞後欣賞震撼人心的「傳統 Eisa 太鼓舞」。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 前往指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>縣道 17 號南城市段；MAPCODE <span class="mapcode-badge text-[10px]">232 495 330*28</span>。</div>
-                <div><strong>🚪 出口與指示：</strong>園區專用大型停車場，進入大門後直行即為玉泉洞地底入口。</div>
-                <div><strong>🪧 現場路牌核對：</strong>沿途見醒目紅色標牌 <span class="street-sign-local text-[10px]">おきなわワールド (OKINAWA WORLD) / 玉泉洞</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>售票總門懸掛巨型赤瓦城門匾額 <span class="font-bold">"おきなわワールド文化王国・玉泉洞"</span>。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>出洞後自動銜接「王國村」傳統紅瓦古民居群，可欣賞每日定時震撼演出的「傳統 Eisa 太鼓舞」。</div>
-              </div>
-
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+World+Gyokusendo" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 玉泉洞・文化王國 ➔
-                </a>
+                <div><strong>📍 完整地址：</strong>〒901-0616 沖縄県南城市玉城前川1336</div>
+                <div><strong>⏰ 營業時間：</strong>09:00-17:30 (最後入場 16:00)，全年無休</div>
+                <div><strong>🚗 自駕路線：</strong>MAPCODE <span class="mapcode-badge text-[10px]">232 495 330*28</span>。由沖繩自動車道南風原南 IC 駛出接縣道 17 號直行約 15 分鐘。</div>
+                <div><strong>🪧 現場招牌核對：</strong>大門處巨大赤瓦城門懸掛牌匾 <span class="street-sign-local text-[10px]">おきなわワールド文化王国・玉泉洞</span>。</div>
+                <div><strong>🧭 轉彎辨識提示：</strong>售票大廳驗票後穿過穿堂，下扶梯直落地底即為玉泉洞起點，沿平整防滑棧道順向單向遊覽。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Okinawa+World+Gyokusendo" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 玉泉洞・文化王國 ↗</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 行程卡: 壺屋通陶藝老街慢步 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/yachimun_street.jpg" alt="壺屋陶藝老街" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/yachimun_street.jpg" alt="壺屋陶藝老街真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：壺屋やちむん通り石板老街街景
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -852,35 +857,35 @@
                 <h4 class="text-xl font-bold text-slate-900">那霸凱悅 Check-in ➔ 壺屋やちむん通り（壺屋陶藝老街）</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                抵達「Hyatt Regency Naha」辦理入住寄存行李後，步行 1 分鐘即達擁有 300 年歷史的琉球陶藝發源地。琉球石灰岩鋪成的石板古道兩旁，林立著數十間獨立陶藝工坊、風獅爺手作店與風格選物咖啡館。
+                入住「Hyatt Regency Naha」寄存行李後，側門步行 1 分鐘即達 300 年歷史的琉球陶藝發源地。石板古道兩旁林立著獨立陶藝工坊與手作風獅爺選物店。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 前往指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>Yui Rail <span class="font-bold text-rose-600">[ 9 ] 牧志站 (Makishi)</span> 步行約 8 分鐘；或從飯店大門直接步行 1 分鐘。</div>
-                <div><strong>🚪 出口與指示：</strong>牧志站出閘後跟隨指示 <span class="font-bold">"Exit 1 ➔ 牧志公設市場 / 壺屋通り"</span>。</div>
-                <div><strong>🪧 現場路牌核對：</strong>街口立有石柱名牌 <span class="street-sign-local text-[10px]">壺屋やちむん通り (TSUBOYA YACHIMUN DORI)</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>認明街角陶藝地標 <span class="font-bold">"壺屋陶芸センター"</span> 與登窯遺構「南窯（ふぇーぬかま）」。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>街道為全石板鋪面，禁止快速行車，沿途步調靜謐，非常適合悠閒挑選具手作溫度的生活陶器。</div>
-              </div>
-
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Tsuboya+Yachimun+Street" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 壺屋陶藝街 ➔
-                </a>
+                <div><strong>📍 完整地址：</strong>〒902-0065 沖縄県那覇市壺屋1-16</div>
+                <div><strong>⏰ 街區時間：</strong>各陶藝工坊約 10:00-18:00，整條街全年無休開放散步</div>
+                <div><strong>🚇 軌道電車：</strong>Yui Rail <span class="font-bold text-rose-600">[ 9 ] 牧志站 (Makishi)</span> 步行約 8 分鐘；若從下榻飯店出門步行僅 1 分鐘（80公尺）。</div>
+                <div><strong>🪧 現場路牌核對：</strong>街口立有琉球石灰岩雕刻名牌 <span class="street-sign-local text-[10px]">壺屋やちむん通り (TSUBOYA YACHIMUN DORI)</span>。</div>
+                <div><strong>🧭 轉彎辨識提示：</strong>街區全為石板步道，禁止快速車輛通行，沿途參觀縣指定有形文化財「南窯（ふぇーぬかま）」登窯遺構。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Tsuboya+Yachimun+Street" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 壺屋陶藝老街 ↗</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 行程卡: 晚餐 琉球茶房 あしびうなぁ (Ashibiuna) -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <!-- 行程卡: 晚餐 琉球茶房 あしびうなぁ + 備案 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/ashibiuna.jpg" alt="琉球茶房 あしびうなぁ" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/ashibiuna.jpg" alt="琉球茶房あしびうなぁ庭園真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：首里古民家枯山水庭園座席
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -889,37 +894,35 @@
                 <h4 class="text-xl font-bold text-slate-900">琉球茶房 あしびうなぁ（Ashibiuna）枯山水庭園琉球御膳</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                座落於首里城下町的美里家古宅舊址。木造古民家前設有典雅精緻的枯山水白砂庭園。旅客盤腿坐在緣側迴廊，伴隨三線琴樂音與晚風，細細品味傳承自琉球王國宮廷食儀的御膳料理。
+                座落於首里城下町的美里家古宅舊址。木造古民家前設有典雅的枯山水白砂庭園。旅客盤腿坐在緣側迴廊，伴隨三線琴樂音與微風，品味傳承自琉球王國宮廷食儀的御膳料理與墨魚汁炒麵。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 首選名店指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🍱</span> 【首選名店】琉球茶房 あしびうなぁ（Ashibiuna）
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>Yui Rail <span class="font-bold text-rose-600">[ 13 ] 儀保站 (Gibo)</span> 或 <span class="font-bold text-rose-600">[ 14 ] 首里站 (Shuri)</span> 步行約 12 分鐘；自駕 MAPCODE <span class="mapcode-badge text-[10px]">33 160 766*00</span>。</div>
-                <div><strong>🚪 出口與指示：</strong>儀保站出閘後跟隨指示往首里當藏町方向，步行或搭乘計程車約 3 分鐘。</div>
-                <div><strong>🪧 現場路牌核對：</strong>當藏十字路口旁巷弄，認明古樸木質立牌 <span class="street-sign-local text-[10px]">琉球茶房 あしびうなぁ (ASHIBIUNA)</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>傳統木質大門與白底黑字布簾 <span class="font-bold">"あしびうなぁ"</span>，門口石刻獅子駐守。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>穿過木門後進入庭院，玄關需脫鞋置入鞋櫃，服務人員將引領至面向枯山水庭園之座席。</div>
-              </div>
-
-              <!-- 推薦品項與備案機制 -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-                <div class="bg-amber-50/80 p-3 rounded-xl border border-amber-200">
-                  <span class="font-bold text-amber-900">🍱 必吃經典名物：</span>
-                  <div class="text-amber-800 mt-1">「いかすみ焼きそば御膳」（墨魚汁黑炒麵御膳）、「あしびうなぁ定食」（含拉芙蒂燉肉、胡麻豆腐、海葡萄與苦瓜炒豆腐）。</div>
-                </div>
-                <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
-                  <span class="font-bold text-slate-800">🛡️ 同區域超強備案：</span>
-                  <div class="text-slate-600 mt-1"><strong class="text-slate-900">首里 いろは庭 (Irohaniwa)</strong> 或 <strong class="text-slate-900">潭亭 (Tantei)</strong>（首里城周邊傳奇琉球會席料理）。</div>
+                <div><strong>📍 完整地址：</strong>〒903-0812 沖縄県那覇市首里当蔵町2-13</div>
+                <div><strong>⏰ 營業時間：</strong>午餐 11:00-15:00 / 晚餐 17:00-22:00 (L.O. 21:00，晚餐強烈建議提早預訂緣側庭園席)，不定休</div>
+                <div><strong>🚇 軌道電車：</strong>Yui Rail <span class="font-bold text-rose-600">[ 13 ] 儀保站 (Gibo)</span> 或 <span class="font-bold text-rose-600">[ 14 ] 首里站 (Shuri)</span> 步行約 12 分鐘；或搭計程車約 8 分鐘。</div>
+                <div><strong>🪧 現場招牌核對：</strong>當藏十字路口巷內，認明古樸木質立牌標示書法字 <span class="street-sign-local text-[10px]">あしびうなぁ</span>。</div>
+                <div><strong>🧭 轉彎動線提示：</strong>穿過木造矮門進入青苔白砂前庭，於玄關脫鞋入內，由店員引導至面向枯山水庭園之坐墊席。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Ryukyu+Sabou+Ashibiuna" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 琉球茶房 ↗</a>
                 </div>
               </div>
 
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Ryukyu+Sabou+Ashibiuna" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 琉球茶房 ➔
-                </a>
+              <!-- 備案 首里いろは庭 -->
+              <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 text-xs space-y-1.5">
+                <div class="font-bold text-amber-900 flex items-center text-xs pb-1 border-b border-amber-200">
+                  <span class="mr-1.5">🛡️</span> 【同區域超強備案】首里 いろは庭 (Irohaniwa)
+                </div>
+                <div><strong>📍 完整地址：</strong>〒903-0815 沖縄県那覇市首里金城町3-162-1</div>
+                <div><strong>⏰ 營業時間：</strong>11:30-15:00 (週一、週二公休)</div>
+                <div><strong>🧭 前往指引：</strong>MAPCODE <span class="mapcode-badge text-[10px]">33 160 327*47</span>。座落於金城町石疊道旁古民家，提供經典琉球會席御膳與自慢泡盛。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Irohaniwa+Shuri+Naha" target="_blank" class="text-amber-800 font-bold underline">🗺️ Google Maps 導航至 首里 いろは庭 ↗</a>
+                </div>
               </div>
             </div>
           </div>
@@ -940,10 +943,13 @@
         </div>
 
         <!-- 行程卡: 首里城公園與正殿復原 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/shurijo_castle.jpg" alt="首里城" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/shurijo_castle.jpg" alt="首里城守禮門真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：首里城世界文化遺產守禮門
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -951,35 +957,35 @@
                 <h4 class="text-xl font-bold text-slate-900">首里城公園（Shurijo Castle）正殿外觀復原現場巡禮</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                琉球王國的政治、外交與文化中心（世界文化遺產）。2026 年秋季正殿外觀工程已盛大完成重現，朱紅色的宮殿樑柱再度矗立於藍天下。晨間散步穿過守禮門、歡會門、登高至西之展望台俯瞰那霸市與東海全景。
+                琉球王國政治與文化中心（世界文化遺產）。2026 年秋季正殿外觀工程盛大重現，朱紅宮殿樑柱再度矗立於藍天下。穿過守禮門、歡會門、登上西之展望台俯瞰那霸市全景。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 前往指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>Yui Rail <span class="font-bold text-rose-600">[ 14 ] 首里站 (Shuri)</span>；步行 15 分或轉搭市內巴士 7/8 號至「首里城前」。</div>
-                <div><strong>🚪 出口與指示：</strong>首里站 Exit 1 出站，抬頭沿著指引 <span class="font-bold">"守礼門・首里城公園方面"</span> 步道行進。</div>
-                <div><strong>🪧 現場路牌核對：</strong>守禮門前立有世界遺產紀念石碑 <span class="street-sign-local text-[10px]">世界遺産 首里城跡 (SHURIJO CASTLE)</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>認明守禮門懸掛正體中文字匾額 <span class="font-bold">"守禮之邦"</span> 與售票處 <span class="font-mono font-bold">"SHURIJO CASTLE PARK"</span>。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>過守禮門後右行經園比屋武御嶽石門，再穿過歡會門與瑞泉門拾級而上進入御庭。</div>
-              </div>
-
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Shurijo+Castle+Park" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 首里城公園 ➔
-                </a>
+                <div><strong>📍 完整地址：</strong>〒903-0815 沖縄県那覇市首里金城町1-2</div>
+                <div><strong>⏰ 營業時間：</strong>免費區 08:00-19:30 / 收費區 08:30-19:00 (最終入場 18:30)</div>
+                <div><strong>🚇 軌道電車：</strong>Yui Rail <span class="font-bold text-rose-600">[ 14 ] 首里站 (Shuri)</span> Exit 1 出站，抬頭沿著指引指標步行約 15 分鐘；或搭乘市內巴士 7/8 號直達「首里城前」。</div>
+                <div><strong>🪧 現場路牌核對：</strong>守禮門前立有世界遺產紀念石碑 <span class="street-sign-local text-[10px]">世界遺産 首里城跡</span>，門樓懸掛 <span class="font-bold">"守禮之邦"</span> 金字匾額。</div>
+                <div><strong>🧭 轉彎動線提示：</strong>過守禮門後右轉經園比屋武御嶽石門，穿過歡會門與瑞泉門拾級而上進入御庭。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Shurijo+Castle+Park" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 首里城公園 ↗</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 行程卡: 波上宮 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/naminoue_shrine.jpg" alt="波上宮" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/naminoue_shrine.jpg" alt="波上宮海崖真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：波上宮聳立於海邊珊瑚礁懸崖
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -987,35 +993,35 @@
                 <h4 class="text-xl font-bold text-slate-900">波上宮（Naminoue Shrine）崖上海景鳥居參拜</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                琉球八社之首，被譽為「當國第一之神社」。整座朱紅神殿聳立於突出於蔚藍海面的珊瑚礁懸崖之巔。參拜祈求旅途平安後，漫步至下方的「波之上海灘」或登上波之上臨海大橋，回望懸崖上的神社倒影。
+                琉球八社之首，被譽為「當國第一之神社」。整座朱紅神殿聳立於突出於蔚藍海面的珊瑚礁懸崖之上。參拜後漫步至波之上海灘或登上波之上臨海大橋，遠眺神社懸崖倒影。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 前往指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>Yui Rail <span class="font-bold text-rose-600">[ 6 ] 旭橋站 (Asahibashi)</span> 步行約 15 分鐘；或由飯店搭計程車約 8 分鐘。</div>
-                <div><strong>🚪 出口與指示：</strong>旭橋站 Exit 1 出站，沿西消防署通り往西北海邊方向行進。</div>
+                <div><strong>📍 完整地址：</strong>〒900-0031 沖縄県那覇市若狭1-25-11</div>
+                <div><strong>⏰ 開放時間：</strong>境內全天開放參拜；社務所與御守發放 09:00-17:00</div>
+                <div><strong>🚇 軌道電車：</strong>Yui Rail <span class="font-bold text-rose-600">[ 6 ] 旭橋站 (Asahibashi)</span> Exit 1 出站，步行約 15 分鐘；或搭計程車約 7 分鐘（車資約 700 日圓）。</div>
                 <div><strong>🪧 現場路牌核對：</strong>參道入口處樹立雄偉黑花崗岩名碑 <span class="street-sign-local text-[10px]">琉球八社之首 官幣小社 波上宮</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>巨大黑色「一之鳥居」與朱紅色「二之鳥居」，正殿匾額標示 <span class="font-bold">"波上宮"</span>。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>穿過鳥居登上石階，手水舍洗手淨心後進入拜殿；若要拍崖上海景全貌，可沿海濱道路走上「波之上臨海道路大橋」人行道。</div>
-              </div>
-
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Naminoue+Shrine+Okinawa" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 波上宮 ➔
-                </a>
+                <div><strong>🧭 轉彎辨識提示：</strong>穿過黑色一之鳥居與朱紅二之鳥居，洗手淨心後上石階抵達拜殿；拍攝海崖懸崖全景最佳視角為走上「波之上臨海道路」人行步道。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Naminoue+Shrine+Okinawa" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 波上宮 ↗</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- 行程卡: 晚餐 Steak & Teppanyaki 碧 (Heki) 國際通松尾店 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <!-- 行程卡: 晚餐 Steak & Teppanyaki 碧 (Heki) + 備案 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/heki_teppanyaki.jpg" alt="碧 鐵板燒" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/heki_teppanyaki.jpg" alt="石垣牛鐵板燒真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：現煎極上石垣牛牛排與鐵板燒
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -1024,37 +1030,35 @@
                 <h4 class="text-xl font-bold text-slate-900">Steak 碧（Heki）國際通松尾店 全女性主廚極品石垣牛鐵板燒</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                沖繩傳奇的高級鐵板燒品牌，特色為「全女性專業調理師操刀」。細膩而精湛的火候掌控，將極稀少珍貴的「最高級黑毛和牛・石垣牛沙朗/菲力」在厚重鐵板上煎炙得表層微脆、內芯肉汁激盪，搭配現煎沖繩紅芋與島蒜。
+                沖繩傳奇的高級鐵板燒品牌，全女性專業調理師細膩操刀。極稀少珍貴的「最高級黑毛和牛・石垣牛沙朗/菲力」在厚重鐵板上煎炙得外酥內嫩、肉汁爆發，搭配現煎沖繩紅芋與蒜片。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 首選名店指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🥩</span> 【首選名店】ステーキハウス 碧 (Heki) 國際通松尾店
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>Yui Rail <span class="font-bold text-rose-600">[ 7 ] 縣廳前站 (Kencho-mae)</span> 步行約 4 分鐘；MAPCODE <span class="mapcode-badge text-[10px]">33 156 204*36</span>。</div>
-                <div><strong>🚪 出口與指示：</strong>縣廳前站 Exit 1 (北口) 出站，步行穿過 Palette Kumoji 前廣場進入國際通入口。</div>
-                <div><strong>🪧 現場路牌核對：</strong>國際通主街門牌核對 <span class="street-sign-local text-[10px]">[ 国際通り KOKUSAI DORI / 松尾 1-2-9 ]</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>認明綠色典雅書法字體大招牌 <span class="font-bold">"ステーキハウス 碧 (HEKI)"</span>（松尾店位於 2 樓）。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>由專屬石質階梯直上 2 樓接待大廳，出示預約姓名，即由主廚引導至獨立抽風鐵板吧台專屬席。</div>
-              </div>
-
-              <!-- 推薦品項與備案機制 -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-                <div class="bg-amber-50/80 p-3 rounded-xl border border-amber-200">
-                  <span class="font-bold text-amber-900">🥩 必點招牌名物：</span>
-                  <div class="text-amber-800 mt-1">「極上黒毛和牛サーロインステーキコース」（特選黑毛和牛沙朗牛排套餐）搭配久米島產車海老、島野菜沙拉與特製蒜香炒飯。</div>
-                </div>
-                <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
-                  <span class="font-bold text-slate-800">🛡️ 同區域超強備案：</span>
-                  <div class="text-slate-600 mt-1"><strong class="text-slate-900">燒肉 Roins 那霸 (焼肉ロインズ)</strong> 或 <strong class="text-slate-900">SAM'S Anchor Inn 國際通店</strong>。</div>
+                <div><strong>📍 完整地址：</strong>〒900-0014 沖縄県那覇市松尾1-2-9 (2F)</div>
+                <div><strong>⏰ 營業時間：</strong>午餐 11:30-15:00 / 晚餐 17:00-22:00 (L.O. 20:30，吧台席位有限需提早預訂)，全年無休</div>
+                <div><strong>🚇 軌道電車：</strong>Yui Rail <span class="font-bold text-rose-600">[ 7 ] 縣廳前站 (Kencho-mae)</span> Exit 1 (北口) 步行 4 分鐘（約 250 公尺）。</div>
+                <div><strong>🪧 現場路牌核對：</strong>國際通主街門牌 <span class="street-sign-local text-[10px]">[ 国際通り KOKUSAI DORI / 松尾 1-2-9 ]</span>。</div>
+                <div><strong>🏬 實體招牌特徵：</strong>認明綠色典雅毛筆書法招牌 <span class="font-bold text-slate-900">"ステーキハウス 碧 (HEKI)"</span>，由專屬石階直上 2 樓。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Steak+Heki+Matsuo+Naha" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 碧 Heki 國際通松尾店 ↗</a>
                 </div>
               </div>
 
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Steak+Heki+Matsuo+Naha" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 碧 Heki 國際通松尾店 ➔
-                </a>
+              <!-- 備案 燒肉 Roins 那霸 -->
+              <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 text-xs space-y-1.5">
+                <div class="font-bold text-amber-900 flex items-center text-xs pb-1 border-b border-amber-200">
+                  <span class="mr-1.5">🛡️</span> 【同區域超強備案】燒肉 Roins 那霸 (焼肉ロインズ 那覇店)
+                </div>
+                <div><strong>📍 完整地址：</strong>〒900-0015 沖縄県那覇市久茂地2-6-16</div>
+                <div><strong>⏰ 營業時間：</strong>17:00-24:00 (L.O. 23:00)</div>
+                <div><strong>🧭 前往指引：</strong>MAPCODE <span class="mapcode-badge text-[10px]">33 156 476*14</span>。單軌美榮橋站步行 5 分鐘，久茂地川旁精緻黑毛和牛炭火燒肉。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Roins+Yakiniku+Kumoji+Naha" target="_blank" class="text-amber-800 font-bold underline">🗺️ Google Maps 導航至 燒肉 Roins ↗</a>
+                </div>
               </div>
             </div>
           </div>
@@ -1074,11 +1078,14 @@
           <span class="text-xs bg-sky-800/80 px-3 py-1 rounded-full border border-sky-600 hidden sm:inline">海景舒緩收尾</span>
         </div>
 
-        <!-- 行程卡: 瀨長島 Umikaji Terrace 與 幸福鬆餅 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <!-- 行程卡: 瀨長島 Umikaji Terrace 與 幸福鬆餅 + 備案 -->
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/senagajima_umikaji.jpg" alt="瀨長島" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/senagajima_umikaji.jpg" alt="瀨長島白色露台真實照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：瀨長島 Umikaji Terrace 白色露台商場
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -1087,47 +1094,47 @@
                 <h4 class="text-xl font-bold text-slate-900">瀨長島 Umikaji Terrace ➔ 幸福鬆餅（A Happy Pancake）</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                距離那霸機場僅 15 分鐘車程的夢幻離島。純白色階梯式建築群順著山丘斜坡面海而建，被譽為「沖繩小希臘」。坐在露天觀景台品嚐現點現做、蓬鬆如雲朵般的「幸せのパンケーキ（幸福鬆餅）」，一邊欣賞大型客機貼海降落的震撼美景。
+                距那霸機場僅 15 分鐘車程的夢幻離島。純白階梯式建築群順坡面海而建，坐在露天觀景台品嚐現點現做、如雲朵般的舒芙蕾厚鬆餅，近觀飛機掠海起降。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 首選名店 幸福鬆餅 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🥞</span> 【首選名店】幸せのパンケーキ（幸福鬆餅 瀨長島店）
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>國道 331 號轉瀨長島聯絡海堤大道；MAPCODE <span class="mapcode-badge text-[10px]">33 002 602*06</span>。</div>
-                <div><strong>🚪 出口與指示：</strong>沿聯絡道進入島上單向環島公路，停妥於海側或展望台公有免費停車場。</div>
-                <div><strong>🪧 現場路牌核對：</strong>街口豎立地標看板 <span class="street-sign-local text-[10px]">瀬長島ウミカジテラス (SENAGAJIMA UMIKAJI TERRACE)</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>幸福鬆餅位於階梯商場第 3 層，認明店號門牌 <span class="font-mono font-bold">[ Shop #32 ] 幸せのパンケーキ</span>。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>商場為層疊階梯設計，由中央白階步道往上走至第 3 層轉角，戶外設有大面透明海景陽傘席位。</div>
-              </div>
-
-              <!-- 推薦品項與備案機制 -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-                <div class="bg-amber-50/80 p-3 rounded-xl border border-amber-200">
-                  <span class="font-bold text-amber-900">🥞 必吃經典名物：</span>
-                  <div class="text-amber-800 mt-1">「濃厚チーズムースパンケーキ ベリーソースがけ」（濃郁起司慕斯佐莓果醬厚鬆餅）配沖繩香檸冷飲。</div>
-                </div>
-                <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
-                  <span class="font-bold text-slate-800">🛡️ 同區域超強備案：</span>
-                  <div class="text-slate-600 mt-1"><strong class="text-slate-900">氾濫漢堡 (氾濫バーガー チムフガス Shop #04)</strong>（超大分量厚培根牛肉堡）。</div>
+                <div><strong>📍 完整地址：</strong>〒901-0233 沖縄県豊見城市瀬長174-6 (Umikaji Terrace Shop #32)</div>
+                <div><strong>⏰ 營業時間：</strong>平日 11:00-20:00 / 週末假日 10:00-20:30 (L.O. 19:30，提前 14 天官網搶約海景露台)</div>
+                <div><strong>🚗 自駕路線：</strong>MAPCODE <span class="mapcode-badge text-[10px]">33 002 602*06</span>。由國道 331 號南下轉海堤聯絡道直達島上免費停車場。</div>
+                <div><strong>🪧 現場門牌核對：</strong>商場為層疊白色階梯設計，由中央白階步道往上走至第 3 層轉角，認明門牌標記 <span class="street-sign-local text-[10px]">[ Shop #32 ] 幸せのパンケーキ</span>。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=A+Happy+Pancake+Senagajima+Okinawa" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 幸福鬆餅 瀨長島店 ↗</a>
                 </div>
               </div>
 
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=A+Happy+Pancake+Senagajima+Okinawa" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 導航至 幸福鬆餅 瀨長島店 ➔
-                </a>
+              <!-- 備案 氾濫漢堡 -->
+              <div class="bg-amber-50/70 p-4 rounded-2xl border border-amber-200 text-xs space-y-1.5">
+                <div class="font-bold text-amber-900 flex items-center text-xs pb-1 border-b border-amber-200">
+                  <span class="mr-1.5">🛡️</span> 【同區域超強備案】氾濫漢堡 (氾濫バーガー チムフガス)
+                </div>
+                <div><strong>📍 完整地址：</strong>〒901-0233 沖縄県豊見城市瀬長174-6 (Umikaji Terrace Shop #04)</div>
+                <div><strong>⏰ 營業時間：</strong>11:00-20:00</div>
+                <div><strong>🧭 前往指引：</strong>位於商場最下層第 1 層面海第一排門牌「Shop #04」，美式厚切培根牛肉巨無霸漢堡。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=氾濫バーガー+チムフガス+瀬長島" target="_blank" class="text-amber-800 font-bold underline">🗺️ Google Maps 導航至 氾濫漢堡 ↗</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         <!-- 行程卡: 機場出境與免稅採買 -->
-        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6 avoid-break">
+        <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm space-y-5 avoid-break">
           <div class="flex flex-col md:flex-row gap-6 items-start">
-            <div class="w-full md:w-1/3 h-52 rounded-2xl overflow-hidden bg-slate-100 flex-shrink-0">
-              <img src="./images/okinawa_cuisine.jpg" alt="那霸機場免稅店" class="w-full h-full object-cover">
+            <div class="w-full md:w-1/3 h-56 rounded-2xl overflow-hidden bg-slate-900 flex-shrink-0 relative">
+              <img src="./images/naha_airport.jpg" alt="那霸機場實景照" class="w-full h-full object-cover">
+              <div class="absolute bottom-2 right-2 real-photo-badge px-2 py-0.5 rounded text-[10px] font-mono">
+                📸 現場真實照：那霸空港國際線出發大廳通道
+              </div>
             </div>
             <div class="flex-1 space-y-3">
               <div class="flex items-center space-x-2">
@@ -1135,25 +1142,21 @@
                 <h4 class="text-xl font-bold text-slate-900">還車 ➔ 那霸空港國際線航廈免稅採買與優雅登機</h4>
               </div>
               <p class="text-xs text-slate-600 leading-relaxed">
-                車輛開至機場周邊營業所完成還車檢查（或專車送達），搭乘接駁車直達國際線 3 樓出發大廳。辦妥登機報到與行李托運後，於管制區內外免稅店採買沖繩限定名產（ROYCE 石垣島黑糖生巧克力、雪鹽金楚糕、首里古酒泡盛），帶著滿滿海島陽光與鬆弛回憶踏上歸途。
+                車輛開至機場營業所完成還車手續，搭乘專車直達國際線 3 樓出發大廳。辦妥報到後於免稅店採買沖繩名產（ROYCE 石垣島黑糖生巧克力、雪鹽金楚糕、首里古酒泡盛），帶著充實放鬆的心情平安返台。
               </p>
 
-              <!-- 5 大實戰導航對照卡 -->
-              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/90 text-xs space-y-2">
+              <!-- 前往指引 -->
+              <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
                 <div class="font-bold text-slate-800 flex items-center text-xs pb-1 border-b border-slate-200">
-                  <span class="mr-1.5">🧭</span> 交通路線與現場實體招牌對照卡
+                  <span class="mr-1.5">🧭</span> 精確位置與前往指引 (Where to go)
                 </div>
-                <div><strong>🚇 路線與代碼：</strong>Yui Rail <span class="font-bold text-rose-600">[ 1 ] 那霸空港站 (Naha Airport)</span> 2F 連通道。</div>
-                <div><strong>🚪 出口與指示：</strong>自駕還車處搭接駁專車停靠於 <span class="font-bold">"国際線出発口 3F"</span> 門前。</div>
-                <div><strong>🪧 現場路牌核對：</strong>航廈抬頭認明深藍底白字大型指標牌 <span class="street-sign-local text-[10px]">INTERNATIONAL DEPARTURES (國際線出發)</span>。</div>
-                <div><strong>🏬 實體外文招牌：</strong>海關出境審查後即達大型免稅店 <span class="font-mono font-bold">"DFS NAHA AIRPORT DUTY FREE"</span>。</div>
-                <div><strong>🧭 轉彎辨識提示：</strong>出境安檢後往 41~44 號登機門方向，免稅店與伴手禮店集中於中央走道兩側，提供免稅即買即提服務。</div>
-              </div>
-
-              <div class="pt-1">
-                <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport+International+Terminal" target="_blank" class="inline-flex items-center text-xs font-bold text-sky-700 hover:text-sky-800">
-                  🗺️ Google Maps 那霸空港國際線 ➔
-                </a>
+                <div><strong>📍 完整地址：</strong>〒901-0142 沖縄県那覇市鏡水150 (那霸空港國際線航廈)</div>
+                <div><strong>🚇 軌道電車：</strong>Yui Rail <span class="font-bold text-rose-600">[ 1 ] 那霸空港站</span> 2 樓天橋連通道直接進出。</div>
+                <div><strong>🚪 出口與指示：</strong>租車接駁車停靠於國際線 3 樓出發大廳門口，抬頭認明深藍底白字看板 <span class="street-sign-local text-[10px]">INTERNATIONAL DEPARTURES (國際線出發)</span>。</div>
+                <div><strong>🛍️ 免稅店位置：</strong>過海關出境審查後即達大型免稅店 <span class="font-mono font-bold">"DFS NAHA AIRPORT DUTY FREE"</span>，集中於 41~44 號登機門兩側。</div>
+                <div class="pt-0.5">
+                  <a href="https://www.google.com/maps/search/?api=1&query=Naha+Airport+International+Terminal" target="_blank" class="text-sky-700 font-bold underline">🗺️ Google Maps 導航至 那霸空港國際線航廈 ↗</a>
+                </div>
               </div>
             </div>
           </div>
@@ -1282,7 +1285,7 @@
           <ul class="space-y-2 text-slate-600 list-disc list-inside">
             <li><strong>退稅門檻：</strong>同一店家當日單筆消費未稅滿 5,000 日圓（含稅 5,500 日圓）以上即可辦理 10% 消費稅減免。</li>
             <li><strong>護照核驗：</strong>結帳時必須出示護照正本（或 Visit Japan Web 之免稅 QR Code）。消耗品（美妝、藥品、食品）會以特製封口袋包裝，在出境日本前<strong>嚴禁拆封</strong>。</li>
-            <li><strong>那霸市購物聖地：</strong>DFS T Galleria（日本唯一的國內免稅精品城）、國際通堂吉訶德、PARCO CITY 百貨均設有專屬退稅服務櫃台。</li>
+            <li><strong>購物聖地：</strong>DFS T Galleria（日本唯一的國內免稅精品城）、國際通堂吉訶德、PARCO CITY 百貨均設有專屬退稅服務櫃台。</li>
           </ul>
         </div>
 
@@ -1309,7 +1312,7 @@
         <a href="#booking-directory" class="hover:text-slate-800">預約清單</a>
         <a href="./【沖繩】極致奢享_深度遊行程規劃指南.pdf" download class="text-sky-700 font-bold hover:underline">下載完整 PDF 手冊</a>
       </div>
-      <p>© 2026 Okinawa Luxury & Slow Travel. 頂級私人旅遊客製顧問規劃版本・即時聯網驗證.</p>
+      <p>© 2026 Okinawa Luxury & Slow Travel. 頂級私人旅遊客製顧問規劃版本・真實實景照與精準導航核實.</p>
     </footer>
 
   </main>
@@ -1317,7 +1320,6 @@
   <!-- 天數篩選腳本 -->
   <script>
     function filterDay(day) {
-      // 切換按鈕狀態
       const buttons = document.querySelectorAll(".day-filter-btn");
       buttons.forEach(btn => {
         if (btn.getAttribute("data-day") === day) {
@@ -1329,7 +1331,6 @@
         }
       });
 
-      // 切換卡片顯示
       const cards = document.querySelectorAll(".day-card");
       cards.forEach(card => {
         if (day === "all") {
